@@ -1,0 +1,106 @@
+1. Identificar e descrever cenários de utilização do sistema de reparos de bracos:
+	- Um cidadão (usuário) está dirigindo seu veiculo em uma determinada rua, quando vê um buraco e não consegue se desviar. O impacto causa danos aos amortecedores de seu automovel. Chegando em sua casa, o cidadão entra no site de Sistema de Suporte ao Reparo de Buracos de sua cidade, para relatar o ocorrido. O usuário preenche todos os dados necessários referêntes ao buraco: endereço, localização, tamanho. Também preenche alguns dados pessoais, informando que o buraco causou prejuizo ao automovel e solicita um reembolso pelo dano. Após o cadastro, conclui o relato e o sistema gera um numero de indentificação para o evento e um arquivo de danos, esse ultimo, com todas as informações sobre o prejuizo relatado.
+	
+2. Identifique conceitos e ações existentes no sistema, usando a técnica de substantivo/verbo:
+	
+	SUBSTANTIVOS (Fonte de classes e objetos - coisas)					VERBOS (Metodos - ações)
+	---------------------------------------------------------------------------------------------------------
+	Sistema de Suporte ao Reparo de Buracos								Armazena (dados do buraco)
+																		Armazena (dados pessoais do cidadão)
+																		Gera numero de identificação
+																		Gera arquivo de danos ao automovel.
+	
+	Buraco																Tem tamanho
+																		Grau de prioridade
+	
+	Automovel															Armazena (dados do automovel)
+																		Danos Causados
+																		Valor do prejuizo
+																						
+	Cidadão																Relata o ocorrido
+																		Solicita o reembolso (se for o caso)
+																						
+																						
+	Status do buraco													Dados da ordem de serviço
+																		Situação do reparo
+																		Situação do reembolso
+									
+	Cadastro
+																						
+																					
+3. Realize a análise inicial deste sistema, usando a tecnica  de cartões CRC:
+	
+	-------------------------------------------     -----------------------------------------------------
+	|		    Cadastro de Cidadão		  	  | 	|					Buraco							|
+	-------------------------------------------		-----------------------------------------------------
+	|    RESPONSABILIDADES	  | COLABORADORES |		|     RESPONSABILIDADES 		 |	COLABORADORES   |
+	-------------------------------------------		-----------------------------------------------------
+	| Relatar o buraco		  |	    Usuário	  |		| Armazenar localização			 | Cidadão			|
+	| Informar dados pessoais |		  		  |		| Saber grau de prioridade		 | Localização		|
+	| Informar danos causados |		  		  | 	| Informar seu status			 | Status			|
+	| Soliciar reembolso	  |		  		  |		| Manter dados atualizados 		 |					|
+	| Atualizar dados		  |				  |		| Ter um numero de identificação |					|
+	-------------------------------------------		-----------------------------------------------------
+	
+	----------------------------------------------------     	---------------------------------------------------------
+	|				  Localização	  		  		   | 		|						Banco de dados				    |
+	----------------------------------------------------		---------------------------------------------------------
+	| RESPONSABILIDADES		  | COLABORADORES 		   |		|      RESPONSABILIDADES 	      |	 COLABORADORES      |
+	----------------------------------------------------		---------------------------------------------------------
+	| Armazenar endereço	  |	    		-  		   |		| Armazenar buracos				  |	Usuário				|
+	----------------------------------------------------		| Armazenar relatos				  |	Buraco				|
+																| Armazenar cadastros de cidadãos |						|
+																---------------------------------------------------------
+													
+	-----------------------------------------------------------------		-------------------------------------------------------------
+	|		          			Status			 		 			| 		|					Dep. de obras publicas					|
+	-----------------------------------------------------------------		-------------------------------------------------------------
+	|    RESPONSABILIDADES	  			 | COLABORADORES 			|		|     RESPONSABILIDADES 			   |	COLABORADORES   |
+	-----------------------------------------------------------------		-------------------------------------------------------------
+	| Acesso ao banco de Dados			 |	Dep. de obras publicas  |		| Informar sua localização  		   | Localização		|
+	| Definir status do reparo do buraco |	Banco de dados 			|		| Manter os status de obras	atualizado | Banco de dados		|
+	| Conter dados da ordem de serviço	 |			 	 			| 		| Acessar banco de dados			   | Status				|
+	| Situação do reembolso	  			 |		  	  	 			|		| 									   |					|
+	| 						  			 |			  	 			|		| 									   |					|
+	-----------------------------------------------------------------		-------------------------------------------------------------
+	
+	--------------------------------------------     	-----------------------------------------------------
+	|		        Arquivo de Danos	  	   | 		|						-------								|
+	--------------------------------------------		-----------------------------------------------------
+	|    RESPONSABILIDADES	  | COLABORADORES  |		|     RESPONSABILIDADES 		 |	COLABORADORES   |
+	--------------------------------------------		-----------------------------------------------------
+	| Gerar um relatorio	  | Banco de dados |		| Armazenar localização			 | Cidadão			|
+	| Salvar em um arquivo	  |				   |		| Saber grau de prioridade		 | Localização		|
+	| Informar danos causados |		  		   | 		| Informar seu status			 | Status			|
+	--------------------------------------------		| Ter um numero de identificação |					|
+														-----------------------------------------------------
+4. Diagrama de classes está no arquivo "4-diagrama-de-classes"
+
+5. Sb esta em algum lugar ainda 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
